@@ -15,3 +15,9 @@ public class OlaController {
 
 
 
+
+//localhost:8080/Get
+//Localhost:8080/home  Get
+//localhost:8080/Cadastro  Get
+
+
