@@ -1,3 +1,5 @@
+
+
 package br.com.sistema.api.model.Medico;
 
 import br.com.sistema.api.model.endereco.Endereco;
