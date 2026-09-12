@@ -1,4 +1,4 @@
-package br.com.sistema.api.model.Medico;
+package br.com.sistema.api.model.medico;
 
 public enum Especialidade {
     ORTOPEDIA,
