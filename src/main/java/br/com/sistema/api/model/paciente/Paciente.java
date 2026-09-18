@@ -1,6 +1,4 @@
 package br.com.sistema.api.model.paciente;
-
-
 import br.com.sistema.api.model.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.*;
