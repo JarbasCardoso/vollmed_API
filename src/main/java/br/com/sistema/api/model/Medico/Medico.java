@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of="id") 
-public class Medico {
+public class Medico { 
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer id;
@@ -34,7 +34,7 @@ public class Medico {
         this.telefone = dados.telefone();
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
-        this.endereco = new Endereco(dados.endereco());
+        this.endereco = new Endereco(dados.endereco()); 
         
     }
     
