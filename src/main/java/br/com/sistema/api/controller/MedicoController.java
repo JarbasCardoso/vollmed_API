@@ -63,6 +63,8 @@ public class MedicoController { // Anotação que indica que a classe é um cont
     medico.atualizarInformacoes(dados);
        
     }
+
+    
 }
 
 // GET/POST Request -> Response -> Ex: Cadastrar . GET Exibe tela de cadastro e o POST é chamado quando o botão enviar é clicado.
