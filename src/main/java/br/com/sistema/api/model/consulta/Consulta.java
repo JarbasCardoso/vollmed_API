@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import br.com.sistema.api.model.medico.Medico;
 import br.com.sistema.api.model.paciente.Paciente;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,17 +34,20 @@ public class Consulta {
     
     private String observacao;
 
-    @ManyToOne 
+    @ManyToOne  // Relacionamento: Muitas consultas podem ter o mesmo paciente.
     @JoinColumn (name="paciente_id")
     
     private Paciente paciente;
 
-    @ManyToOne
+    @ManyToOne // Relacionamento: Muitas consultas podem ter o mesmo médico.
     @JoinColumn (name="medico_id")
     private Medico medico;
     private LocalDateTime data;
+    
 
-    private Status status;  //tipo de status 
+    @Enumerated (EnumType.STRING)
+    private Status status;  
+    //tipo de status 
     // terceiro contrutor da classe consulta que recebe a conversão do DadosAgendamentoConsulta
     // O this.medico =new Medico() cria um objeto de médico vazio. Quando voce tentar inserir o 
     // id nesse noovo medico criado, o new médico  irá receber  e o BD saberá que aquele id já existe e trará as
@@ -58,7 +63,14 @@ public class Consulta {
 
     }
 
-    //@Many ToOne=> Relacionamento: Muitas consultas podem ter o mesmo médico.
+
+    /**
+     *   //@Many ToOne
+     * => Relacionamento: Muitas consultas podem ter o mesmo médico.
+    //=> Sempre o primeiro termo é refertente a tabela atual, segundo termo da tabela de ref.
+     * 
+     */
+   
 
 }
 

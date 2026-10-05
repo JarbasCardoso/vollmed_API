@@ -61,3 +61,8 @@ public class Medico {
         }
     }
 }
+
+//stream()
+//map()
+//filter()
+//List()
