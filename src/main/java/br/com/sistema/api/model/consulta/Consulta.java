@@ -5,10 +5,20 @@ import java.time.LocalDateTime;
 
 import br.com.sistema.api.model.medico.Medico;
 import br.com.sistema.api.model.paciente.Paciente;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 @Entity 
-@Table(name="medicos")
+@Table(name="consultas")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,7 +32,13 @@ public class Consulta {
     
     private String observacao;
 
+    @ManyToOne 
+    @JoinColumn (name="paciente_id")
+    
     private Paciente paciente;
+
+    @ManyToOne
+    @JoinColumn (name="medico_id")
     private Medico medico;
     private LocalDateTime data;
 
