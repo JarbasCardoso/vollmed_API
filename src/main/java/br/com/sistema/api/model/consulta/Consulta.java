@@ -64,6 +64,16 @@ public class Consulta {
     }
 
 
+    //novo método para atualizar o status da consulta, recebendo um novo status como parâmetro e atualizando o atributo status da consulta.
+    public Consulta (DadosAgendamentoConsulta dados,Medico medico,Paciente paciente) {
+        this.medico=medico;
+        this.paciente=paciente;
+        this.status= dados.status();
+        this.observacao= dados.observacao();
+        this.data= dados.data();
+    }
+
+
     /**
      *   //@Many ToOne
      * => Relacionamento: Muitas consultas podem ter o mesmo médico.
