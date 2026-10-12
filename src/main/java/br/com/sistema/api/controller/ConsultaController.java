@@ -28,19 +28,17 @@ public class ConsultaController {
     @Autowired 
     private PacienteRepository pacienteRepository;
     //Post-
-    @PostMapping
+    @PostMapping ("/agendar") // Aponta para localhost:8080/consultas/agendar
     @Transactional 
     public Consulta agendar(@RequestBody DadosAgendamentoConsulta dados) {
         var medico= medicoRepository.getReferenceById(dados.medicoId());
         var paciente= pacienteRepository.getReferenceById(dados.pacienteId());
-       
-       var consulta= new Consulta (dados, medico, paciente);
+        var consulta= new Consulta (dados, medico, paciente);
 
        return consultaRepository.save(consulta);
 
     }
     
-
 }
 
 /**

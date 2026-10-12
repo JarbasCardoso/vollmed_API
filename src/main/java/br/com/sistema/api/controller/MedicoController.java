@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.sistema.api.model.medico.DadosAtualizacaoMedico;
-import br.com.sistema.api.model.medico.DadosCadastroMedico;
-import br.com.sistema.api.model.medico.Medico;
-import br.com.sistema.api.model.medico.MedicoRepository;
+import br.com.sistema.api.model.medico.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import jakarta.transaction.Transactional;
 
 @RestController
@@ -16,8 +16,13 @@ import jakarta.transaction.Transactional;
 public class MedicoController { // Anotação que indica que a classe é um controlador REST e que os métodos dentro dela irão lidar com requisições HTTP.
     // GET Request -> Response -> Ex: Tela home
 
+    private final ConsultaController consultaController;
     @Autowired
     private MedicoRepository medicoRepository; // Injetando a dependência do repositório de médicos para que possamos interagir com o banco de dados.
+
+    MedicoController(ConsultaController consultaController) {
+        this.consultaController = consultaController;
+    }
     
     //Crud Basico de um sistema de cadastro de médicos, com métodos para cadastrar e listar médicos.
     @PostMapping("/cadastro") // Aponta para localhost:8080/medico/cadastro
@@ -37,7 +42,21 @@ public class MedicoController { // Anotação que indica que a classe é um cont
         //CRUD
     }
 
-    //Jarbas ama Sunny Lane <3
+    //GET REQUEST=> Response =>Nome do medico -map(), stream(), toList()
+    @GetMapping("/Listar-por-nome") // Aponta para localhost:8080/medico/Listar-por-nome
+    public List<DadosListagemMedico> listarPorNome(@RequestBody String nome) {
+
+      return medicoRepository.findByNomeContainingIgnoreCase(nome)
+          .stream()
+          .map(DadosListagemMedico::new)
+          .toList();
+      //Meu desejo ter um metodo onde eu passo o nome do medico e eu recebo uma lista de medicos com esse nome, mas não sei como fazer isso.
+    }
+    
+
+     //GET REQUEST => Response =>E-mail  do medico
+
+    
 
 
     //DEL Exclusão ral

@@ -9,7 +9,10 @@ public record DadosCadastroEndereco(
     String uf
 
 ){
- 
+    public DadosCadastroEndereco(Endereco endereco) {
+        this(endereco.getLogradouro(), endereco.getBairro(), endereco.getCep(),
+             endereco.getComplemento(), endereco.getCidade(), endereco.getUf());
+    }
 
 
 
